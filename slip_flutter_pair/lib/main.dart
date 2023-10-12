@@ -30,6 +30,7 @@ class MyTimelineListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: EdgeInsets.symmetric(horizontal: 50),
       children: const [
         MyTimelineTile(
           isFirst: true,
@@ -55,6 +56,11 @@ class MyTimelineListView extends StatelessWidget {
 }
 
 class MyTimelineTile extends StatelessWidget {
+  final bool isFirst;
+  final bool isLast;
+  final bool isPast;
+  final String content;
+
   const MyTimelineTile({
     super.key,
     required this.isFirst,
@@ -62,31 +68,28 @@ class MyTimelineTile extends StatelessWidget {
     required this.isPast,
     required this.content,
   });
-  final bool isFirst;
-  final bool isLast;
-  final bool isPast;
-  final String content;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      child: Container(
-        child: TimelineTile(
-          isFirst: isFirst,
-          isLast: isLast,
-          endChild: DecorationBoxWidget(),
-          beforeLineStyle: LineStyle(
-            color: isPast ? Colors.purple : Colors.purple.shade100,
-          ),
-          indicatorStyle: IndicatorStyle(
-            width: 25,
-            height: 25,
-            color: isPast ? Colors.purple : Colors.purple.shade100,
-            iconStyle: IconStyle(
-              color: isPast ? Colors.white : Colors.purple.shade100,
-              iconData: Icons.done,
-            ),
+      child: TimelineTile(
+        isFirst: isFirst,
+        isLast: isLast,
+        endChild: DecorationBoxWidget(
+          isPast: isPast,
+          child: Text(content),
+        ),
+        beforeLineStyle: LineStyle(
+          color: isPast ? Colors.purple : Colors.purple.shade100,
+        ),
+        indicatorStyle: IndicatorStyle(
+          width: 25,
+          height: 25,
+          color: isPast ? Colors.purple : Colors.purple.shade100,
+          iconStyle: IconStyle(
+            color: isPast ? Colors.white : Colors.purple.shade100,
+            iconData: Icons.done,
           ),
         ),
       ),
@@ -95,16 +98,25 @@ class MyTimelineTile extends StatelessWidget {
 }
 
 class DecorationBoxWidget extends StatelessWidget {
-  const DecorationBoxWidget({Key? key}) : super(key: key);
+  final bool isPast;
+  final child;
+
+  const DecorationBoxWidget({
+    Key? key,
+    required this.isPast,
+    this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: SizedBox(
-        width: 100,
-        height: 100,
-        child: Text('text'),
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: isPast ? Colors.purple : Colors.purple.shade100,
       ),
+      child: child,
     );
   }
 }
