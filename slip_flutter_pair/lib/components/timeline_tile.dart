@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slip_flutter_pair/components/event_card.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class MyTimelineTile extends StatelessWidget {
@@ -23,14 +24,18 @@ class MyTimelineTile extends StatelessWidget {
         isLast: isLast,
         indicatorStyle: IndicatorStyle(
           width: 35,
-          color: isPast ? Colors.blueAccent : Colors.blueAccent,
+          color: isPast ? Colors.blueAccent : Colors.blueAccent.shade100,
           iconStyle: IconStyle(
             iconData: Icons.done,
-            color: isPast ? Colors.white : Colors.blueAccent,
+            color: isPast ? Colors.white : Colors.blueAccent.shade100,
           ),
         ),
-        beforeLineStyle: const LineStyle(
-          color: Colors.blueAccent,
+        beforeLineStyle: LineStyle(
+          color: isPast ? Colors.blueAccent : Colors.blueAccent.shade100,
+        ),
+        endChild: EventCard(
+          isPast: isPast,
+          child2: eventCard,
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:slip_flutter_pair/components/timeline_tile.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 void main() {
   runApp(
@@ -26,16 +25,19 @@ class MyApp extends StatelessWidget {
               isFirst: true,
               isLast: false,
               isPast: true,
+              eventCard: Text('첫번째 페어'),
             ),
             MyTimelineTile(
               isFirst: false,
               isLast: false,
               isPast: true,
+              eventCard: Text('두번째 페어'),
             ),
             MyTimelineTile(
               isFirst: false,
               isLast: true,
               isPast: false,
+              eventCard: Text('마지막 페어'),
             ),
           ],
         ),
