@@ -18,26 +18,44 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 40.0,
+        ),
         child: Column(
           children: [
             MyTimelineTile(
               isFirst: true,
               isLast: false,
               isPast: true,
-              eventCard: Text('첫번째 페어'),
+              eventCard: Text(
+                '첫번째 페어',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
             MyTimelineTile(
               isFirst: false,
               isLast: false,
               isPast: true,
-              eventCard: Text('두번째 페어'),
+              eventCard: Text(
+                '두번째 페어',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
             MyTimelineTile(
               isFirst: false,
               isLast: true,
               isPast: false,
-              eventCard: Text('마지막 페어'),
+              eventCard: Text(
+                '마지막 페어',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),

@@ -8,17 +8,18 @@ class MyTimelineTile extends StatelessWidget {
   final bool isPast;
   final eventCard;
 
-  const MyTimelineTile(
-      {super.key,
-      required this.isFirst,
-      required this.isLast,
-      required this.isPast,
-      this.eventCard});
+  const MyTimelineTile({
+    super.key,
+    required this.isFirst,
+    required this.isLast,
+    required this.isPast,
+    this.eventCard,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
+      height: 150,
       child: TimelineTile(
         isFirst: isFirst,
         isLast: isLast,
@@ -35,7 +36,7 @@ class MyTimelineTile extends StatelessWidget {
         ),
         endChild: EventCard(
           isPast: isPast,
-          child2: eventCard,
+          child: eventCard,
         ),
       ),
     );
