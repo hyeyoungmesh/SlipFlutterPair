@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slip_flutter_pair/components/timeline_tile.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 void main() {
@@ -16,22 +17,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          TimelineTile(
-            isFirst: true,
-            isLast: false,
-          ),
-          TimelineTile(
-            isFirst: false,
-            isLast: false,
-          ),
-          TimelineTile(
-            isFirst: false,
-            isLast: true,
-          ),
-        ],
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12.0),
+        child: Column(
+          children: [
+            MyTimelineTile(
+              isFirst: true,
+              isLast: false,
+              isPast: true,
+            ),
+            MyTimelineTile(
+              isFirst: false,
+              isLast: false,
+              isPast: true,
+            ),
+            MyTimelineTile(
+              isFirst: false,
+              isLast: true,
+              isPast: false,
+            ),
+          ],
+        ),
       ),
     );
   }
