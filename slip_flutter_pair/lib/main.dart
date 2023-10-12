@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 void main() {
   runApp(
@@ -15,6 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        children: [
+          TimelineTile(
+            isFirst: true,
+            isLast: false,
+          ),
+          TimelineTile(
+            isFirst: false,
+            isLast: false,
+          ),
+          TimelineTile(
+            isFirst: false,
+            isLast: true,
+          ),
+        ],
+      ),
+    );
   }
 }
